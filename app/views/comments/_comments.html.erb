@@ -1,0 +1,7 @@
+<h3>Reviews</h3>
+<% @post.comments.each do |comment| %>
+    <p><strong><%= comment.username %></strong>: <%= comment.body %>
+    <%= link_to '[X]', [comment.post, comment],
+                method: :delete,
+                data: { confirm: 'Sho Sure?'} %></p>
+<% end %>
