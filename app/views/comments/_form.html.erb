@@ -1,17 +1,13 @@
 <h3>Add Review</h3>
+<div class="col-lg-4 px-0">
+<%= bootstrap_form_for([@post, @post.comments.build]) do |f| %>
+    <%= f.text_field(:username, required: true )%>
+    <%= f.text_area :body, label: "Comment" %><br>
 
-<%= form_for([@post, @post.comments.build]) do |f| %>
-    <div class="col-lg-4 px-0">
-    <p>
-        <%= f.label :username %><br>
-        <%= f.text_field(:username, {:class => 'form-control'}) %>
-    </p>
-    <p>
-        <%= f.label :body %><br>
-        <%= f.text_area(:body, {:class => 'form-control'}) %>
-    </p>
-    <p>
-        <%= f.submit({:class => 'btn btn-block btn-primary'}) %>
-    </p>
-    </div>
+    <%= f.form_group :terms, help: "Optional Help Text" do %>
+        <%= f.check_box :body, label: "I agree to the Terms of Service" %>
+    <% end %>
+
+    <%= f.submit "Submit comment" %>
+</div>
 <% end %>

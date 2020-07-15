@@ -1,22 +1,19 @@
 <h1>Add Event</h1>
-<%= form_for :post, url: posts_path do |f| %>
-    <% if @post.errors.any? %>
-        <% @post.errors.full_messages.each do |msg|%>
-            <div class="alert alert-danger"><%= msg %></div>
-        <% end %>
-    <% end %>
+<%# <%= bootstrap_form_for :post, url: posts_path do |f| %> %>
+<%= bootstrap_form_for(@post, label_errors: true) do |f| %>
+    <%# <% if @post.errors.any? %>
+        <%# <% @post.errors.full_messages.each do |msg|%>
+             <%# <div class="alert alert-danger"><%= msg %></div>
+        <%# <% end %> 
+    <%# <% end %>
     <p>
-        <%= f.label :title %><br>
-        <%= f.text_field(:title, {:class => 'form-control'}) %>
+        <%= f.text_field(:title) %>
     </p>
-
     <p>
-        <%= f.label :body %><br>
-        <%= f.text_area(:body, {:class => 'form-control'}) %>
+        <%= f.text_area(:body) %>
     </p>
-
     <p>
-        <%= f.submit({:class => 'btn btn-primary'}) %>
+        <%= f.submit %>
     </p>
 
 <% end %>

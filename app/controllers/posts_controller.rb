@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-    http_basic_authenticate_with name: "Dami", password: "password", 
-                                    except: [:index, :show]
+    # http_basic_authenticate_with name: "Dami", password: "password", 
+    #                                 except: [:index, :show]
     def index
         @posts = Post.all
     end
@@ -25,7 +25,7 @@ class PostsController < ApplicationController
     def update
         @post =  Post.find(params[:id])
         if(@post.update(post_params))
-            redirect_to @post
+            redirect_to @post, notice: "Event was successfully updated"
         else
             render 'edit'
         end
